@@ -12,10 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <PokemonProvider>
-         <Nav />
-        {children} 
+          <Nav />
+          {children}
         </PokemonProvider>
-        
       </body>
     </html>
   );

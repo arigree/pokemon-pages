@@ -1,17 +1,17 @@
-.mainNav{
+.mainNav {
     height: 60px;
-    background-color: green;
+    background-color: #c391ec;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-}
-.mainNav li {
+  }
+  
+  .mainNav li {
     list-style: none;
-
-}
-.mainNav li a{
+  }
+  
+  .mainNav li a {
     text-decoration: none;
     color: black;
     font-size: 32px;
-}
+  }

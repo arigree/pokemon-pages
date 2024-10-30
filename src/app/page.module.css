@@ -1,15 +1,15 @@
-.mainContent{
+.mainContent {
     text-align: center;
-
-}
-.mainContent h1{
+  }
+  
+  .mainContent h1 {
     font-size: 60px;
     margin: 40px 0;
-}
-
-.mainContent section{
+  }
+  
+  .mainContent section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 20px;
     justify-items: center;
-}
+  }
