@@ -1,0 +1,13 @@
+.pokeCard{
+    height: 400px;
+    width: 300px;
+    background-color: #b0ccd5;
+
+}
+.pokeCard img{
+    height: calc(400px - 125px);
+}
+.pokeCard div{
+    height: 125px;
+    background-color: #a8ebff;
+}
