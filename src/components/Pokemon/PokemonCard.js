@@ -1,5 +1,5 @@
 "use client";
-import pokemonStyles from "./pokemon.module.css";
+import pokemonStyles from "@/components/Pokemon/pokemon.module.css";
 
 export default function PokemonCard({ img = "", name = "", types = [] }) {
   return (

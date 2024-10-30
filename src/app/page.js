@@ -11,6 +11,9 @@ export default function Home() {
     if (pokeData.totalPokemonCount === 0) {
       pokeData.getNumberOfPokemon();
     }
+    if(!pokeData.randomPokemon.length){
+      pokeData.getRandomPokemon();
+    }
   }, [pokeData]);
 
   console.log(pokeData);

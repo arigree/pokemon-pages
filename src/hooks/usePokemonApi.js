@@ -12,24 +12,31 @@ export function PokemonProvider({ children }) {
     const pokeResponse = await fetch(
       `https://pokeapi.co/api/v2/pokemon/?limit=1`
     );
-    const { count: pokemonCount} = await pokeResponse.json();
+    const { count: pokemonCount } = await pokeResponse.json();
     setPokemonState({ ...pokemonState, totalPokemonCount: pokemonCount });
   }
-  
-  async function getRandomPokemon(limit = 5){
+
+  async function getRandomPokemon(limit = 5) {
+    if (!pokemonState.totalPokemonCount) return[];
     const pokemonIds = {};
     let pokeIndex = 0;
 
-    while(pokeIndex < limit){
-      const ranID = parseInt(Math.random() * pokemonState.totalPokemonCount) + 1;
-      pokemonIds[ranID] = {}
-      pokeIndex++;
+    while (pokeIndex < limit) {
+      const ranID =
+        parseInt(Math.random() * pokemonState.totalPokemonCount) + 1;
+      if (!pokemonIds[ranID]) {
+        pokemonIds[ranID] = {};
+        pokeIndex++;
+      }
     }
-    console.log(pokemonIds)
+    console.log(pokemonIds);
+  }
+
+  const pokemonValues = {
+    ...pokemonState,
+    getNumberOfPokemon,
+    getRandomPokemon,
   };
-
-  const pokemonValues = { ...pokemonState, getNumberOfPokemon };
-
   return (
     <PokemonContext.Provider value={pokemonValues}>
       {children}
