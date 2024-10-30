@@ -10,6 +10,7 @@ export default function PokemonCard({ img = "", name = "", types = [] }) {
         <p>
           <i>Types: Normal</i>
         </p>
+=======
       </div>
     </div>
   );
