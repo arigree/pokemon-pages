@@ -11,20 +11,27 @@ export default function Home() {
     if (pokeData.totalPokemonCount === 0) {
       pokeData.getNumberOfPokemon();
     }
-    if(!pokeData.randomPokemon.length){
-      pokeData.getRandomPokemon();
+    if (!pokeData.randomPokemon.length) {
+      pokeData.getRandomPokemon(3);
     }
   }, [pokeData]);
 
-  console.log(pokeData);
+  const randomPokemonListJsx = pokeData.randomPokemon.map(function (pokemon) {
+    const quickInfo = pokeData.getPokemonQuickInfo(pokemon);
+    return (
+      <PokemonCard
+        key={`poke-card-${quickInfo.id}`}
+        name={quickInfo.name}
+        img={quickInfo.img}
+        types={quickInfo.types}
+      />
+    );
+  });
+
   return (
     <main className={homeStyles.mainContent}>
       <h1>POKEMON SHOWCASE</h1>
-      <section>
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-      </section>
+      <section>{randomPokemonListJsx}</section>
     </main>
   );
 }
