@@ -16,6 +16,16 @@ export function PokemonProvider({ children }) {
     setPokemonState({ ...pokemonState, totalPokemonCount: pokemonCount });
   }
   
+  async function getRandomPokemon(limit = 5){
+    const pokemonIds = {};
+    let pokeIndex = 0;
+
+    while(pokeIndex < limit){
+      pokeIndex++;
+    }
+    console.log(pokemonIds)
+  };
+
   const pokemonValues = { ...pokemonState, getNumberOfPokemon };
 
   return (
