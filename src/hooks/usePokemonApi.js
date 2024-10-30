@@ -21,6 +21,8 @@ export function PokemonProvider({ children }) {
     let pokeIndex = 0;
 
     while(pokeIndex < limit){
+      const ranID = parseInt(Math.random() * pokemonState.totalPokemonCount) + 1;
+      pokemonIds[ranID] = {}
       pokeIndex++;
     }
     console.log(pokemonIds)
