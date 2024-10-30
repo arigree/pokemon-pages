@@ -17,7 +17,7 @@ export function PokemonProvider({ children }) {
   }
 
   async function getRandomPokemon(limit = 5) {
-    if (!pokemonState.totalPokemonCount) return[];
+    if (!pokemonState.totalPokemonCount) return [];
     const pokemonIds = {};
     let pokeIndex = 0;
 
@@ -25,11 +25,22 @@ export function PokemonProvider({ children }) {
       const ranID =
         parseInt(Math.random() * pokemonState.totalPokemonCount) + 1;
       if (!pokemonIds[ranID]) {
-        pokemonIds[ranID] = {};
+        let idToUse = ranID;
+        if (idToUse > 1000) {
+          idToUse = "10" + String(idToUse).slice(1);
+        }
+        const pokeRequest = fetch(
+          `https://pokeapi.co/api/v2/pokemon/${idToUse}`
+        );
+        const pokeData = await pokeRequest.json();
+        pokemonIds[ranID] = pokeData;
         pokeIndex++;
       }
     }
-    console.log(pokemonIds);
+    setPokemonState({
+      ...pokemonState,
+      randomPokemon: Object.values(pokemonIds),
+    });
   }
 
   const pokemonValues = {
