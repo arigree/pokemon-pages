@@ -7,6 +7,10 @@ export function PokemonProvider({ children }) {
   const [pokemonState, setPokemonState] = useState({
     totalPokemonCount: 0,
     randomPokemon: [],
+    searchResults: [],
+    eggGroupPokemon:{},
+    habitatPokemon: {},
+
   });
 
   async function getNumberOfPokemon() {
@@ -54,12 +58,48 @@ export function PokemonProvider({ children }) {
       types: pokeData.types,
     };
   }
+async function searchPokemon(query, filterType){
+  let apiUrl= "";
+  if (filterType === "name"){
+    apiUrl = `https://pokeapi.co/api/v2/pokemon/${query}`;
+
+  }else if (filterType === "egg-group"){
+    apiUrl = `https://pokeapi.co/api/v2/egg-group/${query}`;
+  
+  }else if (filterType === "pokemon-habitat"){
+    apiUrl = `https://pokeapi.co/api/v2/pokemon-habitat/${query}`
+  };
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+
+  let resultData = [];
+  if (filterType === "name"){
+    resultData= [data];
+  }else {
+    const promises = data.pokemon_species.map(async (species) => {
+      const pokeResponse = await fetch(species.url.replace("-species", ""));
+      return await pokeResponse.json();
+
+    });
+    resultData = await Promise.all(promises)
+  }
+  setPokemonState({
+    ...pokemonState,
+    searchResults: resultData,
+  });
+}
+async function getPokemonByEggGroup(){
+  const response = await fetch("")
+}
+
+
 
   const pokemonValues = {
     ...pokemonState,
     getNumberOfPokemon,
     getRandomPokemon,
     getPokemonQuickInfo,
+    searchPokemon
   };
 
   return (

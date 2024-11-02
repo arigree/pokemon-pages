@@ -12,7 +12,7 @@ export default function Nav() {
           <Link href="/search">Search</Link>
         </li>
         <li>
-          <Link href="/favorites">Favorites</Link>
+          <Link href="/groups">Groups</Link>
         </li>
       </ul>
     </nav>
