@@ -5,6 +5,7 @@ import { useState } from "react";
 import PokemonCard from "@/components/Pokemon/PokemonCard";
 
 
+
 export default function Search() {
   
   const [searchInput, setSearchInput] =useState("");

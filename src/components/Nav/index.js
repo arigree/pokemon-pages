@@ -14,6 +14,9 @@ export default function Nav() {
         <li>
           <Link href="/groups">Groups</Link>
         </li>
+        <li>
+          <Link href="/favorites">Favorites</Link>
+        </li>
       </ul>
     </nav>
   );

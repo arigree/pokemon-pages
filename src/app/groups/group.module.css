@@ -1,0 +1,16 @@
+.container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.egg{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+.habitat{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+}
